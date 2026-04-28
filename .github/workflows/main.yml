@@ -22,7 +22,7 @@ jobs:
         python-version: '3.11'
 
     - name: 🛠️ 启动极简编译脚本
-      run: python build.py
+      run: python build.py zip
 
     - name: 🎁 打包并上传成果
       uses: actions/upload-artifact@v4
