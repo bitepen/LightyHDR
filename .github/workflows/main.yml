@@ -1,6 +1,5 @@
 name: 🚀 云端锻造厂
 
-# 什么时候触发任务？(代码推上去时，或者手动点击时)
 on:
   push:
     branches: [ "*" ]
@@ -8,13 +7,19 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest # 使用 GitHub 提供的顶级 Linux 服务器
+    runs-on: ubuntu-latest
 
     steps:
     - name: 📥 拉取代码
       uses: actions/checkout@v4
       with:
-        submodules: recursive # 把需要的底层文件都拉过来
+        submodules: recursive
+
+    - name: 🔧 强行请出老中医 NDK (绝对防断供)
+      uses: nttld/setup-ndk@v1
+      id: setup-ndk
+      with:
+        ndk-version: r25c
 
     - name: 🐍 配置 Python 引擎
       uses: actions/setup-python@v5
@@ -22,10 +27,11 @@ jobs:
         python-version: '3.11'
 
     - name: 🛠️ 启动极简编译脚本
-      run: python build.py --ndk $ANDROID_HOME/ndk/25.2.9519653 zip
-      
+      # 这里自动读取上面下载好的 NDK 路径，天衣无缝！
+      run: python build.py --ndk ${{ steps.setup-ndk.outputs.ndk-path }} zip
+
     - name: 🎁 打包并上传成果
       uses: actions/upload-artifact@v4
       with:
-        name: LightyHDR-Zygisk-Module # 你下载时看到的文件名
-        path: out/*.zip # 脚本生成的刷机包都在 out 文件夹里
+        name: LightyHDR-Zygisk-Module
+        path: out/*.zip
