@@ -19,7 +19,7 @@ jobs:
       uses: nttld/setup-ndk@v1
       id: setup-ndk
       with:
-        ndk-version: r21e
+        ndk-version: r25c
 
     - name: 🐍 配置 Python 引擎
       uses: actions/setup-python@v5
