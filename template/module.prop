@@ -1,0 +1,7 @@
+id=lighty_nohdr
+name=Zygisk - Disable Threads HDR Display
+version=v1.0
+versionCode=1
+author=Lighty Jiang & Doraemon
+description=在 C++ 底层层面切断 Threads 的 HDR 渲染请求，以禁用其 Ultra HDR 影音内容显示。
+#updateJson=
