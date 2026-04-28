@@ -15,11 +15,11 @@ jobs:
       with:
         submodules: recursive
 
-    - name: 🔧 强行请出老中医 NDK (绝对防断供)
+    - name: 🔧 请出真正的太上老君 NDK
       uses: nttld/setup-ndk@v1
       id: setup-ndk
       with:
-        ndk-version: r25c
+        ndk-version: r21e
 
     - name: 🐍 配置 Python 引擎
       uses: actions/setup-python@v5
